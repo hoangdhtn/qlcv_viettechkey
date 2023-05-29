@@ -85,8 +85,12 @@
             @foreach($filecongvan as $file)
             <div class="row p-5">
               <p class=" col-lg-4">{{$file->name}}</p>
-              <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary col-lg-1 m-3"><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
-              <a style="color: #ffffff;" href="{{ route('deletefilecongvandi', $file->id) }}" class="btn btn-danger col-lg-1 m-3"><i class="icon md-delete " aria-hidden="true"></i> Xóa</a>
+              <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary"><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
+              <div class="m-3"></div>
+              <a style="color: #ffffff;" href="{{ route('deletefilecongvandi', $file->id) }}" class="btn btn-danger"><i class="icon md-delete " aria-hidden="true"></i> Xóa</a>
+              <a target="_blank" style="color: #ffffff;" href="{{ route('reviewfile', $file->name) }}" class="btn btn-success"><i class="icon md-eye" aria-hidden="true"></i> Xem file</a>
+                <div style="margin: 10px;"></div>
+
             </div>
             @endforeach
           </div>
@@ -108,16 +112,16 @@
           <div class="form-group form-material" data-plugin="formMaterial">
             <label class="form-control-label" >Chọn phòng ban để gửi</label>
             <div class="controls">
-              <div class="h-p10 w-p10 float-left m-10">
+              <div class="float-left m-10">
                 <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Đóng tất cả</a>
               </div>
-              <div class="h-p10 w-p10 float-left m-10">
+              <div class="float-left m-10">
                 <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Mở tất cả</a>
               </div>
-              <div class="h-p10 w-10 float-left m-10">
+              <div class="float-left m-10">
                 <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Chọn tất cả</a>
               </div>
-              <div class="h-10 w-10 float-left m-10">
+              <div class="float-left m-10">
                 <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Bỏ chọn tất cả</a>
               </div>  
             </div>
@@ -247,9 +251,7 @@
 
 
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-  CKEDITOR.replace('noidung');
-</script>
+
 <script>
 
 // $(function() {

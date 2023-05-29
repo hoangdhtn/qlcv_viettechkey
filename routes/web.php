@@ -27,13 +27,9 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function () {
 
     // Tải xuống 
-    Route::get('files/{file_name}', function($file_name = null)
-    {
-        $path = storage_path() .'/files/'.$file_name;
-        if (file_exists($path)) {
-            return Response::download($path);
-        }
-    })->name('files');
+    Route::get('/downloadfiles/{filename}', [App\Http\Controllers\DownloadFileController::class, 'downloadfile'])->name('files');
+    // Review file
+     Route::get('/reviewfile/{filename}', [App\Http\Controllers\DownloadFileController::class, 'reviewfile'])->name('reviewfile');
 
     // User
     Route::resource('userinfo', App\Http\Controllers\UserInformationController::class);
@@ -130,6 +126,9 @@ Route::group(['middleware' => 'auth'], function () {
     // Data danh sách báo cáo chưa nộp 
     Route::get('/dataBaoCaoChuaNop', [App\Http\Controllers\BaoCaoController::class, 'dataBaoCaoChuaNop'])->name('dataBaoCaoChuaNop');
 
+    //====================== SETTING ===============================
+    Route::get('/setting', [App\Http\Controllers\SettingController::class, 'index'])->name('indexsetting');
+    Route::get('/setting-congvan', [App\Http\Controllers\CongVanSettingController::class, 'index'])->name('congvansetting');
 });
 
 require __DIR__.'/auth.php';

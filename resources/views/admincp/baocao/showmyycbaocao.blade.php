@@ -75,9 +75,12 @@
             @foreach($filebaocao as $file)
             <div class="row p-5">
               <p class=" col-lg-4">{{$file->name}}</p>
-              <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary col-lg-1 m-3"><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
               
             </div>
+            <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary"><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
+            <div style="margin: 10px;"></div>
+            <a target="_blank" style="color: #ffffff;" href="{{ route('reviewfile', $file->name) }}" class="btn btn-success"><i class="icon md-eye" aria-hidden="true"></i> Xem file</a>
+            <div style="margin: 10px;"></div>
             @endforeach
           </div>
         {{--   <div class="row form-group ">
@@ -229,9 +232,6 @@
 
 
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-  CKEDITOR.replace('noidung');
-</script>
 <script>
 
 $(function() {

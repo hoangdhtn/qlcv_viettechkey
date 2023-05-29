@@ -65,8 +65,8 @@ class BaoCaoController extends Controller
 
         try {
             // Xử lý tạo thư mục chứa file upload
-            if (! File::exists(storage_path('files'))) {
-                File::makeDirectory(storage_path('files'));
+            if (! File::exists(public_path('files'))) {
+                File::makeDirectory(public_path('files'));
             }
             
             // Xử lý file upload
@@ -76,9 +76,9 @@ class BaoCaoController extends Controller
                 //dd($data['file']);
                 foreach($data['file'] as $key => $file)
                 {
-                    $path = $file->store('storage/files');
+                    $path = $file->store('public/files');
                     $name = time().'-'. trim($file->getClientOriginalName());
-                    $file->move('storage/files', $name);
+                    $file->move('public/files', $name);
 
 
                     array_push($arrFile, $name);
@@ -213,8 +213,8 @@ class BaoCaoController extends Controller
             if(count($baocao->phanhoibaocao()->get()) <= 0){
 
                 // Xử lý tạo thư mục chứa file upload
-                if (! File::exists(storage_path('files'))) {
-                    File::makeDirectory(storage_path('files'));
+                if (! File::exists(public_path('files'))) {
+                    File::makeDirectory(public_path('files'));
                 }
                 
                 // Xử lý file upload
@@ -224,9 +224,9 @@ class BaoCaoController extends Controller
                     //dd($data['file']);
                     foreach($data['file'] as $key => $file)
                     {
-                        $path = $file->store('storage/files');
+                        $path = $file->store('public/files');
                         $name = time().'-'. trim($file->getClientOriginalName());
-                        $file->move('storage/files', $name);
+                        $file->move('public/files', $name);
 
 
                         array_push($arrFile, $name);
@@ -292,7 +292,7 @@ class BaoCaoController extends Controller
 
                 // Xóa file
                 foreach ($filebaocao as $key => $cv) {
-                    unlink(storage_path('files/'.$cv->name));
+                    unlink(public_path('files/'.$cv->name));
 
                     $fcv = FilePhanHoiBaoCao::find($cv->id);
                     $fcv->delete();

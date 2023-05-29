@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
+
 
 class CongVan extends Model
 {
-    use HasFactory;
+    use HasFactory, Sortable;
 
     public $timestamps = true;
+
+    public $sortable = ['id', 'id_nguoigui', 'tieude' , 'created_at'];
     
     protected $fillable = [
-        'id', 'id_nguoigui', 'tieude', 'noidung', 
+        'id', 'id_nguoigui', 'tieude', 'noidung', 'created_at', 
     ];
     protected $primaryKey = 'id';
     protected $table = 'congvan';

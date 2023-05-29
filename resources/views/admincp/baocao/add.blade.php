@@ -99,16 +99,16 @@
       <div class="form-group form-material" data-plugin="formMaterial">
         <label class="form-control-label" >Chọn phòng ban để gửi</label>
         <div class="controls">
-          <div class="h-p10 w-p10 float-left m-10">
+          <div class="float-left m-10">
             <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Đóng tất cả</a>
           </div>
-          <div class="h-p10 w-p10 float-left m-10">
+          <div class="float-left m-10">
             <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Mở tất cả</a>
           </div>
-          <div class="h-p10 w-10 float-left m-10">
+          <div class="float-left m-10">
             <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Chọn tất cả</a>
           </div>
-          <div class="h-10 w-10 float-left m-10">
+          <div class="float-left m-10">
             <a style="color: white;" class="btn btn-block btn-primary waves-effect waves-classic" id="ccc">Bỏ chọn tất cả</a>
           </div>  
         </div>
@@ -130,17 +130,18 @@
                 echo '( Có '.$sum . ' thành viên)';
                 @endphp
               </span>
-            </label>
+            </label><ul>
             @foreach($all_users as $key => $user)
             @if($user->name == $phongban->name && $user->user_id != Auth::id())  {{-- && $user->user_id != Auth::id() --}}
-            <ul>
+
               <li class="">
                 <input type="checkbox" name="friend[]" value="{{$user->user_id}}">
                 <label>{{$user->name_dislay}} </label>
               </li>
-            </ul>
+
             @endif
             @endforeach
+            </ul>
           </li>
           @endforeach
         </ul>
@@ -156,10 +157,7 @@
 
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
 
-<script>
-  CKEDITOR.replace('noidung');
 
-</script>
 
 
 @endsection

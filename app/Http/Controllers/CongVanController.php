@@ -231,7 +231,7 @@ class CongVanController extends Controller
             // dd($congvan);
 
             if($congvan->id_nguoigui == auth()->user()->id){
-                unlink(storage_path('files/'.$congvan->name));
+                unlink(public_path('files/'.$congvan->name));
 
                 $fcv = FileCongVan::find($congvan->id);
                 $fcv->delete();
@@ -300,8 +300,8 @@ class CongVanController extends Controller
 
             try {
             // Xử lý tạo thư mục chứa file upload
-                if (! File::exists(storage_path('files'))) {
-                    File::makeDirectory(storage_path('files'));
+                if (! File::exists(public_path('files'))) {
+                    File::makeDirectory(public_path('files'));
                 }
 
             // Xử lý file upload
@@ -312,9 +312,9 @@ class CongVanController extends Controller
                     {
 
                         if($file != null){
-                            $path = $file->store('storage/files');
+                            $path = $file->store('public/files');
                             $name = time().'-'. trim($file->getClientOriginalName());
-                            $file->move('storage/files', $name);
+                            $file->move('public/files', $name);
 
 
                             array_push($arrFile, $name);
@@ -382,7 +382,7 @@ class CongVanController extends Controller
             if($cvdelete->id_nguoigui == auth()->user()->id){
                 // Xóa file
                 foreach ($congvan as $key => $cv) {
-                    unlink(storage_path('files/'.$cv->name));
+                    unlink(public_path('files/'.$cv->name));
 
                     $fcv = FileCongVan::find($cv->id);
                     $fcv->delete();
@@ -423,8 +423,8 @@ class CongVanController extends Controller
 
         try {
             // Xử lý tạo thư mục chứa file upload
-            if (! File::exists(storage_path('files'))) {
-                File::makeDirectory(storage_path('files'));
+            if (! File::exists(public_path('files'))) {
+                File::makeDirectory(public_path('files'));
             }
             
             // Xử lý file upload
@@ -434,9 +434,9 @@ class CongVanController extends Controller
                 //dd($data['file']);
                 foreach($data['file'] as $key => $file)
                 {
-                    $path = $file->store('storage/files');
+                    $path = $file->store('public/files');
                     $name = time().'-'. trim($file->getClientOriginalName());
-                    $file->move('storage/files', $name);
+                    $file->move('public/files', $name);
 
 
                     array_push($arrFile, $name);

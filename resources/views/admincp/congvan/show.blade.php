@@ -85,10 +85,19 @@
           <div class="form-group form-material" >
             <label class="form-control-label" >Tài liệu</label>
             @foreach($filecongvan as $file)
-            <div class="row p-5">
+            <div class="row p-12">
               <p class=" col-lg-4">{{$file->name}}</p>
-              <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary col-lg-1 "><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
+              <br/>
+
             </div>
+            <a style="color: #ffffff;" href="{{ route('files', $file->name) }}" class="btn btn-primary"><i class="icon md-download" aria-hidden="true"></i> Tải về</a>
+            <div style="margin: 10px;"></div>
+            <a target="_blank" style="color: #ffffff;" href="{{ route('reviewfile', $file->name) }}" class="btn btn-success"><i class="icon md-eye" aria-hidden="true"></i> Xem file</a>
+            <div style="margin: 10px;"></div>
+           {{-- <embed src="{{ storage_path() .'/files/'. $file->name }}" width="600" height="500" alt="pdf" /> --}}
+            {{-- <iframe src='https://docs.google.com/gview?url={{ storage_path() .'/files/'. $file->name }}&embedded=true' width='1366px' height='623px' frameborder='0'>This is an embedded <a target='_blank' href='http://office.com'>Microsoft Office</a> document, powered by <a target='_blank' href='http://office.com/webapps'>Office Online</a>.</iframe> --}}
+
+
             @endforeach
           </div>
           <div class="form-group form-material" data-plugin="formMaterial">
@@ -153,9 +162,7 @@
 
 
 <script src="//code.jquery.com/jquery-3.1.1.min.js"></script>
-<script>
-  CKEDITOR.replace('noidung');
-</script>
+
 <script>
 
 // $(function() {

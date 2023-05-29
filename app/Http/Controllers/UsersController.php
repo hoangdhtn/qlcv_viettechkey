@@ -13,6 +13,8 @@ use App\Models\PhongBans;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+use Auth;
+
 class UsersController extends Controller
 {
     public function __construct(){
@@ -101,7 +103,8 @@ class UsersController extends Controller
     
     public function usersData()
     {
-        $users = User::orderBy('id', 'DESC')->get();
+        $users = Auth::id() == 1 ? User::orderBy('id', 'DESC')->get() : User::where('id','!=', 1)->orderBy('id', 'DESC')->get();
+
         //dd($users);
         return Datatables::of($users)->addColumn('role', function (User $data) {
             $text = '';
@@ -111,7 +114,7 @@ class UsersController extends Controller
                 $text .= $a;
             }
             return $text;
-        })->addColumn('action', function (User $data) {
+        })->addIndexColumn()->addColumn('action', function (User $data) {
             return '<a href="'. route('users.show', $data->id) .'" class="btn btn-success m-3"><i class="icon md-eye" aria-hidden="true"></i>Xem</a> 
             <a href="'. route('deleteuser', $data->id) .'" class="btn btn-danger m-3"><i class="icon md-delete" aria-hidden="true"></i>Xóa</a>
             <a href="'. route('roleandper', $data->id) .'" class="btn btn-info m-3"><i class="icon md-account" aria-hidden="true"></i>Quyền</a>';
@@ -222,8 +225,8 @@ class UsersController extends Controller
         // $user->phongbans()->sync(1);
 
         $data = $request->validate([
-            'name' => 'required|max:255|min:8',
-            'namedislay' => 'required|max:255|min:8',
+            'name' => 'required|max:255',
+            'namedislay' => 'required|max:255',
             'email' => 'required|unique:users,email',
             'username' => 'required|string|regex:/\w*$/|max:255|unique:users,username',
             'password' => 'required|min:8',
@@ -310,7 +313,7 @@ class UsersController extends Controller
         $user = User::find($id);
         $data = $request->validate([
             'name' => 'required|max:255',
-            'namedislay' => 'required|max:255|min:8|unique:users,name_dislay,'.$user->id,
+            'namedislay' => 'required|max:255|unique:users,name_dislay,'.$user->id,
             'email' => 'required|unique:users,email,'.$user->id,
             'username' => 'required|string|regex:/\w*$/|max:255|unique:users,username,'.$user->id,
             'password' => 'required|min:8',

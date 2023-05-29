@@ -7,6 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\LogSetting;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -32,6 +33,10 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // LogSetting::create([
+        //     'content' => "Người dùng " . auth()->user()->name_dislay . " đã đăng nhập hệ thống",
+        // ]);
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 
@@ -43,11 +48,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        // LogSetting::create([
+        //     'content' => "Người dùng " . auth()->user()->name_dislay . " đã thoát hệ thống",
+        // ]);
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
+
+       
+
 
         return redirect('/');
     }

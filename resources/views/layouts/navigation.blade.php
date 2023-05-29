@@ -297,6 +297,16 @@ data-toggle="collapse">
         </li>
         @endrole
 
+        @role('super admin')
+        <li class="site-menu-item has-sub">
+          <a href="{{ route('indexsetting') }}">
+            <i class="site-menu-icon icon md-settings" aria-hidden="true"></i>
+            <span class="site-menu-title">Cài đặt</span> 
+            {{-- <span class="site-menu-arrow"></span> --}}
+          </a>
+        </li>
+        @endrole
+
         {{-- @can('edit articles')
           //
           @endcan --}}

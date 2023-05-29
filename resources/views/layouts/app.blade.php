@@ -63,6 +63,7 @@
         <link rel="stylesheet" href="{{asset('public/backend/global/vendor/waves/waves.css')}}">
         <link rel="stylesheet" href="{{asset('public/backend/global/vendor/jvectormap/jquery-jvectormap.css')}}">
         <link rel="stylesheet" href="{{asset('public/backend/assets/examples/css/dashboard/v1.css')}}">
+        
         {{-- Datatable --}}
         <link rel="stylesheet" href="{{asset('public/backend/global/vendor/datatables.net-bs4/dataTables.bootstrap4.css')}}">
         <link rel="stylesheet" href="{{asset('public/backend/global/vendor/datatables.net-fixedheader-bs4/dataTables.fixedheader.bootstrap4.css')}}">
@@ -108,10 +109,15 @@
         {{-- Statistics --}}
         <link rel="stylesheet" href="{{asset('public/backend/assets/examples/css/widgets/statistics.css')}}">
 
+        {{-- Table basic --}}
+        <link rel="stylesheet" href="{{asset('public/backend/assets/examples/css/tables/basic.css')}}">
+
        
+        <link rel="stylesheet" href="{{asset('public/backend/assets/examples/css/structure/pagination.css')}}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="{{asset('public/backend/global/fonts/material-design/material-design.min.css')}}">
+        <link rel="stylesheet" href="{{asset('public/backend/global/fonts/font-awesome/font-awesome.css')}}">
         <link rel="stylesheet" href="{{asset('public/backend/global/fonts/brand-icons/brand-icons.min.css')}}">
         <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
 
@@ -249,6 +255,7 @@
 <script src="{{asset('public/backend/global/vendor/jvectormap/maps/jquery-jvectormap-world-mill-en.js')}}"></script>
 <script src="{{asset('public/backend/global/vendor/matchheight/jquery.matchHeight-min.js')}}"></script>
 <script src="{{asset('public/backend/global/vendor/peity/jquery.peity.min.js')}}"></script>
+
 {{--   Datatable --}}
 <script src="{{asset('public/backend/global/vendor/datatables.net/jquery.dataTables.js')}}"></script>
 <script src="{{asset('public/backend/global/vendor/datatables.net-bs4/dataTables.bootstrap4.js')}}"></script>
@@ -373,6 +380,7 @@
 <script src="{{asset('public/backend/global/js/Plugin/jquery-placeholder.js')}}"></script>
 
 <script src="{{asset('public/backend/assets/examples/js/forms/advanced.js')}}"></script>
+
 
 
 

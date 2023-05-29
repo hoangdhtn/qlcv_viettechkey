@@ -149,7 +149,7 @@ role="dialog" tabindex="-1">
     <table class="table table-hover dataTable table-striped w-full" id="users-table">
       <thead>
         <tr>
-          <th>ID</th>
+            <th>STT</th>
           <th>Tên hiển thị</th>
           <th>Tên người dùng</th>
           {{-- <th>Tài khoản</th> --}}
@@ -197,7 +197,7 @@ role="dialog" tabindex="-1">
                 url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/vi.json'
               },
               columns: [
-              { data: 'id', name: 'id' },
+                 { data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false },
               { data: 'name_dislay', name: 'name_dislay' },
               { data: 'name', name: 'name' },
               // { data: 'username', name: 'username' },
